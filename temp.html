@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      margin-top: 0;
+    }
+
+    header {
+      position: fixed;
+      right: 0;
+      left: 0;
+      background-color: whitesmoke;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      max-width: 10%;
+      height: 80px;
+      padding-left: 10px;
+      object-fit: contain;
+    }
+
+    .nav {
+      text-align: right;
+
+      width: 90%;
+    }
+
+    .nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav li {
+      display: inline-block;
+      margin: 0.5em;
+    }
+
+    .nav a {
+      font-weight: 900;
+      text-decoration: none;
+
+      color: rgb(182, 173, 52);
+    }
+
+    .nav a:hover {
+      color: palevioletred;
+
+    }
+
+    #progressbar {
+      position: fixed;
+      width: 100%;
+      background-color: whitesmoke;
+      border-color: whitesmoke;
+      height: 0.25em;
+      color: lightcoral;
+    }
+
+    #progressbar::-moz-progress-bar {
+      background-color: lightcoral;
+    }
+
+    .jio {
+      width: 85%;
+      height: 200px;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: .75rem;
+      right: 1rem;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+    }
+
+    .toggle-button .bar {
+      height: 3px;
+      width: 100%;
+      background-color: rgb(75, 28, 28);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: aquamarine;
+
+
+      }
+
+      .toggle-button {
+        margin-top: 15px;
+        display: flex;
+      }
+
+      .navbar-links {
+        display: none;
+
+        width: 100%;
+      }
+
+      .navbar-links ul {
+
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .navbar-links ul li a {
+        padding: .5rem 1rem;
+      }
+
+      .navbar-links.active {
+        display: flex;
+      }
+    }
+  </style>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+<body>
+
+  <header>
+    <img src="./cflogo.png" alt="" class="logo">
+    <nav class="nav">
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+
+      <div class="navbar-links">
+        <ul>
+          <li><a href="./prof.html">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <br><br><br><br>
+  <progress id="progressbar" value="0" max="100"></progress>
+
+  <p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  </p>
+</body>
+<script>
+  window.onscroll = function () { myFunction() };
+  function myFunction() {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+
+    document.getElementById("progressbar").value = scrolled;
+  }
+
+  const toggleButton = document.getElementsByClassName('toggle-button')[0]
+  const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+  toggleButton.addEventListener('click', () => {
+    navbarLinks.classList.toggle('active')
+  })
+
+</script>
+
+</html>

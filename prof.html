@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>team</title>
+</head>
+<style>
+
+    .title h1 {
+        font-size: 50px;
+        text-align: center;
+        position: relative;
+    }
+
+    .teammems {
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px auto;
+
+    }
+
+    .teammem {
+        background-color: rgb(82, 166, 166);
+        border-radius: 20px;
+        box-shadow: 0px 2px 5px(0, 0, 0, 0.2);
+        margin: 0px 20px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.6s ease;
+        width: calc(33.33%-20px);
+
+    }
+
+    .teammem:hover {
+        transform: translatey(-12px);
+    }
+
+    .teamimg img {
+        border-radius: 50%;
+        height: 250px;
+        width: 250px;
+        object-fit: cover;
+        margin-bottom: 10px;
+
+
+    }
+
+    @media screen and (max-width:750px) {
+        .teammems {
+            flex-direction: column;
+            display: flex;
+
+        }
+
+        .teammem {
+            width: 85%;
+            margin: 25px auto;
+
+        }
+
+    }
+</style>
+
+<body>
+    <section class="team">
+        <div class="title">
+            <h1>2023-24</h1>
+        </div>
+
+        <div class="teammems">
+            <div class="teammem">
+                <div class="teamimg">
+                    <img src="./shin.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <h3>harshsd</h3>
+
+                </div>
+            </div>
+            <div class="teammem">
+                <div class="teamimg">
+                    <img src="./shin.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <h3>harshsd</h3>
+
+                </div>
+            </div>
+            <div class="teammem">
+                <div class="teamimg">
+                    <img src="./shin.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <h3>harshsd</h3>
+
+                </div>
+            </div>
+            <div class="teammem">
+                <div class="teamimg">
+                    <img src="./shin.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <h3>harshsd</h3>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
