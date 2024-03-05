@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel with Highlighted Card</title>
+  <style>
+   
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .carousel {
+      width: 100%;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; 
+    }
+    .card {
+      flex: 0 0 auto;
+      width: 600px;
+      height: 300px;
+      margin: 0 10px;
+      border-radius: 10px;
+      background-color: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+    .highlighted {
+      border: 2px solid red;
+    }
+    .blurred {
+      filter: blur(3px);
+      opacity: 0.5;
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 1;
+    }
+    .prev {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-container">
+    <button class="arrow prev">&lt;</button>
+    <div class="carousel">
+      <div class="card">1</div>
+      <div class="card">2</div>
+      <div class="card">3</div>
+      <div class="card">4</div>
+      <div class="card">5</div>
+      <div class="card">6</div>
+      <div class="card">7</div>
+      <div class="card">8</div>
+      <div class="card">9</div>
+    </div>
+    <button class="arrow next">&gt;</button>
+  </div>
+
+  <script>
+    
+    const carousel = document.querySelector('.carousel');
+    const cards = document.querySelectorAll('.card');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let autoSlideInterval;
+
+    prevBtn.addEventListener('click', slidePrev);
+    nextBtn.addEventListener('click', slideNext);
+
+    
+    startAutoSlide();
+
+    
+    carousel.addEventListener('mouseenter', pauseAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+
+    function slidePrev() {
+      carousel.scrollLeft -= 250; 
+    }
+
+    function slideNext() {
+      carousel.scrollLeft += 250; 
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        carousel.scrollLeft += 250; 
+      }, 3000); 
+    }
+
+    function pauseAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', highlightCard);
+      card.addEventListener('mouseleave', resetCards);
+    });
+
+    function highlightCard(event) {
+      resetCards(); 
+      this.classList.add('highlighted');
+      cards.forEach(otherCard => {
+        if (otherCard !== this) {
+          otherCard.classList.add('blurred');
+        }
+      });
+    }
+
+    function resetCards() {
+      cards.forEach(card => {
+        card.classList.remove('highlighted');
+        card.classList.remove('blurred');
+      });
+    }
+  </script>
+</body>
+</html>
